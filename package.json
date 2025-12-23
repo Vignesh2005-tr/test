@@ -1,0 +1,16 @@
+{
+  "name": "ff-guild-app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "discord.js": "^14.16.3",
+    "express": "^4.21.1",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^3.3.2"
+  }
+}
