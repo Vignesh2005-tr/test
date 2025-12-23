@@ -5,78 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Free Fire Guild</title>
     <style>
-        body { background: #1a1a1a; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
-        .form-container { background: #2a2a2a; padding: 30px; border-radius: 15px; display: inline-block; text-align: left; border: 2px solid #ff4444; }
-        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
-        .checkbox-group { margin: 10px 0; }
-        button { background: #ff4444; color: white; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; width: 100%; border-radius: 5px; }
+        body { background: #121212; color: white; font-family: 'Segoe UI', sans-serif; text-align: center; }
+        .container { background: #1e1e1e; padding: 20px; border-radius: 10px; border: 2px solid #ff4444; display: inline-block; text-align: left; margin-top: 50px; width: 90%; max-width: 400px; }
+        input[type=text], input[type=number], textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #444; background: #333; color: white; box-sizing: border-box; }
+        .check-section { margin: 15px 0; padding: 10px; background: #252525; border-radius: 5px; }
+        button { background: #ff4444; color: white; border: none; padding: 15px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 5px; font-size: 16px; }
         button:hover { background: #cc0000; }
     </style>
 </head>
 <body>
 
-    <h1>🔥 REGISTER FREE FIRE GUILD 🔥</h1>
-    
-    <div class="form-container">
-        <form id="applyForm">
+    <h1>🔥 REGISTER FREE FIRE GUILD</h1>
+
+    <div class="container">
+        <form id="guildForm">
             <label>Full Name:</label>
-            <input type="text" name="name" required placeholder="Enter Game Name">
+            <input type="text" name="name" required>
 
             <label>Age:</label>
             <input type="number" name="age" required>
 
-            <label>Discord User ID (Numbers Only):</label>
-            <input type="text" name="discordId" required placeholder="Example: 123456789012345">
+            <label>Discord User ID (Numeric):</label>
+            <input type="text" name="discordId" required placeholder="e.g. 1452646170739343421">
 
             <label>FF Experience:</label>
-            <textarea name="experience" placeholder="Tell us about your skills..."></textarea>
+            <textarea name="experience" rows="3"></textarea>
 
-            <div class="checkbox-group">
+            <div class="check-section">
                 <label><b>Role:</b></label><br>
                 <input type="checkbox" name="roles" value="Rusher"> Rusher
                 <input type="checkbox" name="roles" value="Sniper"> Sniper
                 <input type="checkbox" name="roles" value="All Rounder"> All Rounder
             </div>
 
-            <div class="checkbox-group">
+            <div class="check-section">
                 <label><b>Device:</b></label><br>
-                <input type="checkbox" name="devices" value="PC"> PC
                 <input type="checkbox" name="devices" value="Mobile"> Mobile
+                <input type="checkbox" name="devices" value="PC"> PC
             </div>
 
-            <button type="submit" id="submitBtn">SEND APPLICATION</button>
+            <button type="submit" id="subBtn">SUBMIT APPLICATION</button>
         </form>
     </div>
 
     <script>
-        document.getElementById('applyForm').addEventListener('submit', async (e) => {
+        document.getElementById('guildForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = document.getElementById('submitBtn');
+            const btn = document.getElementById('subBtn');
             btn.textContent = "SENDING...";
             
             const formData = new FormData(e.target);
             
             try {
-                // Change this URL to your Railway App URL after deploying
-// FIND THIS LINE IN YOUR index.html AND UPDATE IT:
-const res = await fetch('https://godx-guild-application-production.up.railway.app/submit-app', {
-    method: 'POST',
-    body: formData
-});
+                // Change this URL to your Railway App URL
+                const res = await fetch('https://godx-guild-application-production.up.railway.app/apply', {
+                    method: 'POST',
+                    body: formData
+                });
 
                 if (res.ok) {
                     alert("✅ Application Sent! Role added on Discord.");
                     e.target.reset();
                 } else {
-                    alert("❌ Error connecting to server.");
+                    alert("❌ Server Error. Check Railway logs.");
                 }
             } catch (err) {
-                alert("❌ Connection Failed.");
+                alert("❌ Connection Failed. Check if Railway is Online.");
             } finally {
-                btn.textContent = "SEND APPLICATION";
+                btn.textContent = "SUBMIT APPLICATION";
             }
         });
     </script>
 </body>
-
 </html>
