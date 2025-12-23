@@ -58,10 +58,11 @@
             
             try {
                 // Change this URL to your Railway App URL after deploying
-                const res = await fetch('https://godx-guild-application-production.up.railway.app/submit-app', {
-                    method: 'POST',
-                    body: formData
-                });
+// FIND THIS LINE IN YOUR index.html AND UPDATE IT:
+const res = await fetch('https://godx-guild-application-production.up.railway.app/submit-app', {
+    method: 'POST',
+    body: formData
+});
 
                 if (res.ok) {
                     alert("✅ Application Sent! Role added on Discord.");
@@ -77,4 +78,5 @@
         });
     </script>
 </body>
+
 </html>
