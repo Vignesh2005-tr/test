@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
 
-  background-image: url("image/king2.jpg");
+  background-image: url("image/king2.png");
   background-size: 2000px;
   color: black;
 
@@ -220,4 +220,5 @@ body {
     width: 90%;
   }
 }
+
 
