@@ -7,8 +7,8 @@ body {
   background-size: 100%;        /* full screen */
   background-position: center;   /* center image */
   background-attachment: fixed;  /* cinematic effect */
-  backdrop-filter: blur(5px);    /* 🔥 NO BLUR */
-  COLOR : rgb(12, 11, 11);                 /* text color */
+  backdrop-filter: blur(0px);    /* 🔥 NO BLUR */
+  COLOR : white;                 /* text color */
 }
 
 /* =====================
@@ -173,4 +173,5 @@ body {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+
 }
